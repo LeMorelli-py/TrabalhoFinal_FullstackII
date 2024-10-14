@@ -1,0 +1,76 @@
+sistema de recrutamento online.
+filtros de busca para encontrar candidatos que atendam aos requisitos
+das vagas em aberto, agendar entrevistas, realizar testes online, entre outras atividades
+
+==============================================================================================================================
+Seguindo o código mysql do banco de dados abaixo, crie o backend para a API netvagas, contendo as camadas controller, model, routes, segurança e services. Utilize as linguagens NodeJS + express, MySQL, JavaScript. Também é preciso que essa API possua uma tela de login para que o candidato possa se cadastrar e logar informando seu usuário e senha.
+A aplicação desse backend deve fornecer as seguintes funcionalidades:
+Endpoint para candidatos: http://localhost:4000/candidatos
+Endpoint para vagas: http://localhost:4000/vagas
+Endpoint para entrevista: http://localhost:4000/inscricoes
+
+Não pode ser utilizado o endpoint “associar”.
+
+create database netvagas;
+
+use netvagas;
+
+CREATE TABLE candidato (
+    cpf VARCHAR(11) NOT NULL PRIMARY KEY UNIQUE,
+    nome VARCHAR(100) NOT NULL,
+    cart_trab_num VARCHAR(7) NOT NULL,
+    cart_trab_serie VARCHAR(4) NOT NULL,
+    dt_nasc DATE NOT NULL,
+    rg VARCHAR(12) NOT NULL UNIQUE,
+    cep VARCHAR(9),
+    endereco VARCHAR(100),
+    numero INT NOT NULL,
+    bairro VARCHAR(30),
+    cidade VARCHAR(25),
+    estado CHAR(2),
+    naturalidade VARCHAR(50),
+    tel_fixo VARCHAR(15) NOT NULL,
+    tel_celular VARCHAR(15) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    grau_instrucao ENUM('Ensino Fundamental Completo', 'Ensino Fundamental Incompleto', 
+                       'Ensino Médio Completo', 'Ensino Médio Incompleto', 
+                       'Ensino Superior Completo', 'Ensino Superior Incompleto'),
+    curso_superior VARCHAR(100),
+    titulo_eleitor_num VARCHAR(12),
+    zona_eleitoral VARCHAR(4),
+    pis VARCHAR(11),
+    habilitacao_num VARCHAR(11),
+    nome_mae VARCHAR(100),
+    nome_pai VARCHAR(100),
+    estado_civil ENUM('Solteiro', 'Casado', 'Separado', 'Divorciado', 'Viúvo'),
+    conjuge VARCHAR(100),
+    residencia ENUM('Propria', 'Alugada'),
+    cert_militar_num VARCHAR(20),
+    cert_militar_serie VARCHAR(20),
+    cert_militar_categ VARCHAR(20),
+    filhos ENUM('sim', 'não'),
+    qtde_filhos INT NOT NULL DEFAULT 0
+);
+
+CREATE TABLE vaga (
+    cod_vaga INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    cargo VARCHAR(100) NOT NULL,
+    salario DECIMAL(10, 2) NOT NULL,
+    cidade VARCHAR(50) NOT NULL,
+    estado CHAR(2) NOT NULL,
+    qtde_vaga INT NOT NULL CHECK (qtde_vaga > 0)
+);
+
+CREATE TABLE candidato_vaga (
+    data_inscricao DATE NOT NULL,
+    hora_inscricao TIME NOT NULL,
+    pk_cand_cpf VARCHAR(11),
+    pk_vaga_cod INT,
+    PRIMARY KEY (pk_cand_cpf, pk_vaga_cod),
+    FOREIGN KEY (pk_cand_cpf) REFERENCES candidato(cpf) ON DELETE CASCADE,
+    FOREIGN KEY (pk_vaga_cod) REFERENCES vaga(cod_vaga) ON DELETE CASCADE
+);
+
+
+
+

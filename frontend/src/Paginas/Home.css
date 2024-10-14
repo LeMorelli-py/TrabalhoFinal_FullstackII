@@ -1,0 +1,16 @@
+/* Estilos para a página inicial */
+.home-container {
+    margin-top: 50px; /* Espaço acima da página */
+    padding: 20px; /* Espaço interno */
+    background-color: #f8f9fa; /* Cor de fundo suave */
+}
+
+h1 {
+    font-size: 2.5rem; /* Tamanho do título */
+    margin-bottom: 20px; /* Espaço abaixo do título */
+}
+
+p {
+    font-size: 1.2rem; /* Tamanho do texto da descrição */
+    margin-bottom: 40px; /* Espaço abaixo da descrição */
+}

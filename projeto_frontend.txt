@@ -1,0 +1,74 @@
+netvagas-frontend/
++-- public/
+¦   +-- index.html
+¦   +-- ...
++-- src/
+¦   +-- components/
+¦   ¦   +-- CandidatoForm.jsx  // Novo componente unificado
+¦   ¦   +-- VagaForm.jsx
+¦   ¦   +-- InscricaoForm.js
+¦   ¦   +-- Navbar.js
+¦   ¦   +-- LoginForm.js
+¦   ¦   +-- UsuarioForm.js
+¦   +-- pages/
+¦   ¦   +-- Home.js
+¦   ¦   +-- CandidatosPagina.js
+¦   ¦   +-- VagasPagina.js
+¦   ¦   +-- InscricoesPagina.js
+¦   ¦   +-- LoginPagina.js
+¦   +-- App.js
+¦   +-- index.js
+¦   +-- api/
+¦   ¦   +-- api.js
+¦   +-- styles/
+¦       +-- App.css
++-- package.json
++-- ...
+
+DESCRIÇÃO DOS COMPONENTES
+
+1 - Navbar.jsx
+Um componente de barra de navegação que permite a navegação entre as páginas.
+
+2 - CandidatoForm.jsx
+Formulário para adicionar ou editar candidatos.
+Campos: CPF, Nome, Cartão de Trabalho, Data de Nascimento, RG, Endereço, Telefone, Email, Grau de Instrução, etc.
+
+3 - VagaList.jsx
+Lista de vagas disponíveis.
+Cada vaga deve ter informações como cargo, salário, cidade e estado.
+
+4 - InscricaoForm.jsx
+Formulário para candidatar-se a uma vaga.
+Deve incluir seleção de uma vaga e informações do candidato.
+
+5 - LoginForm.jsx
+Formulário para login do usuário.
+
+6 - UsuarioForm.js
+Exibe informações do usuário logado e suas inscrições.
+
+
+======================================================================================
+DESCRIÇÃO DAS PÁGINAS
+
+1 - Home.jsx
+Página inicial com uma breve descrição do serviço.
+
+2 - Candidatos.jsx
+Página que exibe o formulário de candidatos e a lista de candidatos cadastrados, relacionada ao Component CandidatoForm.jsx 
+
+3 - Vagas.jsx
+Página que lista todas as vagas disponíveis, , relacionada ao Component VagaForm.jsx
+
+4 - Inscricoes.jsx
+Página que exibe as inscrições realizadas pelo candidato, relacionada ao Component InscricaoForm.jsx
+
+5 - Login.jsx
+Página de login para usuários, relacionada ao Component LoginForm.jsx
+
+=====================================================================================
+API
+
+api.js
+Funções para interagir com a API, como buscar candidatos, vagas e processar inscrições.
